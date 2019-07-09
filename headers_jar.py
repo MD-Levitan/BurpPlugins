@@ -17,11 +17,8 @@ class BurpExtender(IBurpExtender, ITab, ISessionHandlingAction):
 
         self.tab = swing.JPanel(BorderLayout())
 
-        # Create the text area at the top of the tab
         text_panel = swing.JPanel()
-
         box_vertical = swing.Box.createVerticalBox()
-
         box_horizontal = swing.Box.createHorizontalBox()
         box_horizontal.add(swing.JLabel(self.PLUGIN_NAME))
         box_vertical.add(box_horizontal)
@@ -34,17 +31,30 @@ class BurpExtender(IBurpExtender, ITab, ISessionHandlingAction):
         box_vertical.add(box_horizontal)
 
         box_vertical.add(swing.JButton('Set settings', actionPerformed=self.set_settings))
-
         box_vertical.add(swing.JButton('Print jar', actionPerformed=self.print_jar))
 
         text_panel.add(box_vertical)
         self.tab.add(text_panel, "West")
 
+        text_panel = swing.JPanel()
+        box_vertical = swing.Box.createVerticalBox()
+        box_horizontal = swing.Box.createHorizontalBox()
+        box_horizontal.add(swing.JLabel("Logs"))
+        self.logs = swing.JTextArea('', 4, 20)
+        self.logs.setLineWrap(False)
+        scroll = swing.JScrollPane(self.logs,
+                                   swing.JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                                   swing.JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS)
+        box_horizontal.add(scroll)
+        box_vertical.add(box_horizontal)
+        text_panel.add(box_vertical)
+        self.tab.add(text_panel, "East")
+
 
         callbacks.addSuiteTab(self)
 
-        self.update_action = UpdateHeaders(self.stdout, self._helpers, self.jar)
-        self.add_action = AddHeaders(self.stdout, self._helpers, self.jar)
+        self.update_action = UpdateHeaders(self.stdout, self._helpers, self.jar, self.logs)
+        self.add_action = AddHeaders(self.stdout, self._helpers, self.jar, self.logs)
 
         self._callbacks.registerSessionHandlingAction(self.update_action)
         self._callbacks.registerSessionHandlingAction(self.add_action)
@@ -55,12 +65,15 @@ class BurpExtender(IBurpExtender, ITab, ISessionHandlingAction):
     def set_settings(self, event):
         headers = map(lambda x: str(x.strip(" ")), self.headers_names.text.split(","))
         settings = {"headers": headers}
+        self.logs.append("Set the following settings: {}\n".format(settings))
         self.update_action.set_settings(settings)
         self.add_action.set_settings(settings)
 
     def print_jar(self, event):
+        self.logs.append("Headers JAR\n")
         for (x, y) in self.jar.items():
-            self.stdout.println("{} -- {}".format(x, y))
+            self.logs.append("{} -- {}".format(x, y))
+        self.logs.append("--------\n")
 
     def getTabCaption(self):
         """Return the text to be displayed on the tab"""
@@ -74,11 +87,12 @@ class BurpExtender(IBurpExtender, ITab, ISessionHandlingAction):
 class UpdateHeaders(ISessionHandlingAction):
     ACTION_NAME = "Update headers from jar"
 
-    def __init__(self, stdout, helpers, jar):
+    def __init__(self, stdout, helpers, jar, logs):
         self.stdout = stdout
         self._helpers = helpers
         self.headers = []
         self.jar = jar
+        self.logs = logs
 
     def set_settings(self, settings):
         self.headers = settings["headers"]
@@ -103,11 +117,12 @@ class UpdateHeaders(ISessionHandlingAction):
 class AddHeaders(ISessionHandlingAction):
     ACTION_NAME = "Add headers to jar"
 
-    def __init__(self, stdout, helpers, jar):
+    def __init__(self, stdout, helpers, jar, logs):
         self.stdout = stdout
         self._helpers = helpers
         self.headers = []
         self.jar = jar
+        self.logs = logs
 
     def set_settings(self, settings):
         self.headers = settings["headers"]
@@ -116,6 +131,7 @@ class AddHeaders(ISessionHandlingAction):
         return self.ACTION_NAME
 
     def performAction(self, current_request, macro_items):
+        self.logs.append("AddHeaders -- perform action\n")
         request_info = self._helpers.analyzeRequest(current_request)
         headers = request_info.getHeaders()
         for header in headers[1:]:
@@ -123,4 +139,5 @@ class AddHeaders(ISessionHandlingAction):
             if head in self.headers:
                 break_p = header.find(":")
                 self.jar.update({header[:break_p]: header[break_p + 1:]})
-                self.stdout.println("Add to jar header: {}".format(head))
+                # self.stdout.println("Add to jar header: {}".format(head))
+                self.logs.append("Add to jar header: {}".format(head))
