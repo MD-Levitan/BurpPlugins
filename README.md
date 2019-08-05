@@ -17,13 +17,13 @@ Also plugin provides Tab with confuguration and logs panels.
 ## Usage
 * Create Session Handling Rules in tab *Project Options/Sessions*:
   - One rule for catching new headers and adding them into Headers JAR(e.g. catch new Header from Proxy-Browser).
-    ![Details of 1-st rule](https://github.com/MD-Levitan/BurpPlugins/edit/master/.README/Headers/add_details.png)
-    ![Rule Action of 1-st rule](https://github.com/MD-Levitan/BurpPlugins/edit/master/.README/Headers/add_rule.png)
-    ![Scope of 1-st rule](https://github.com/MD-Levitan/BurpPlugins/edit/master/.README/Headers/add_scope.png)
+    ![Details of 1-st rule](.README/Headers/add_details.png)
+    ![Rule Action of 1-st rule](.README/Headers/add_rule.png)
+    ![Scope of 1-st rule](.README/Headers/add_scope.png)
   - Second rule for updating headers, you can configure rule to update all headers or update only when the header has expired.
-    ![Details of 2-nd rule](https://github.com/MD-Levitan/BurpPlugins/edit/master/.README/Headers/update_details.png)
-    ![Action of 2-nd rule](https://github.com/MD-Levitan/BurpPlugins/edit/master/.README/Headers/update_rule.png)
-    ![Scope of 2-nd rule](https://github.com/MD-Levitan/BurpPlugins/edit/master/.README/Headers/update_scope.png)
+    ![Details of 2-nd rule](.README/Headers/update_details.png)
+    ![Action of 2-nd rule](.README/Headers/update_rule.png)
+    ![Scope of 2-nd rule](.README/Headers/update_scope.png)
 * Open Tab *Headers JAR* and add name the header.
 
     
