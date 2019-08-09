@@ -2,12 +2,11 @@
 
 ![RoadMap](./roadmap.png)
 
-## Install tutorial:
+## Installation:
 - [Download BurpSuite](https://support.portswigger.net/customer/en/portal/articles/2327557-downloading-burp-software-and-your-license-key)
 - [Launch BurpSuite](https://support.portswigger.net/customer/portal/articles/1783038-Installing_Launching%20Burp.html)
 - [Configure Browser](https://support.portswigger.net/customer/portal/articles/1783055-configuring-your-browser-to-work-with-burp)
 - [Installing Burp's CA Certificate in your browser](https://support.portswigger.net/customer/portal/articles/1783075-installing-burp-s-ca-certificate-in-your-browser) 
-
 
 ## Elementary Burp Tools
 ### Tools
@@ -18,8 +17,10 @@
 - [Sequencer](https://portswigger.net/burp/documentation/desktop/tools/sequencer)
 - [Decoder](https://portswigger.net/burp/documentation/desktop/tools/decoder)
 ### Articles
-- [In Russian](https://losst.ru/kak-polzovatsya-burp-suite#2_1048108910871086108311001079108610741072108510801077nbspIntruder)
-___
+- [Basic Tools](https://www.computerweekly.com/tutorial/Burp-Suite-Guide-Part-I-Basic-tools)
+- [Tool kit](https://securitytraning.com/burp-suite-tutorial/)
+- [Overview of BurpSuite(rus)](https://habr.com/en/post/328382/)
+- [Usage of BurpSuite(rus)](https://losst.ru/kak-polzovatsya-burp-suite#2_1048108910871086108311001079108610741072108510801077nbspIntruder)
 
 ## Basic of Burp Extender
 - [About](https://portswigger.net/burp/documentation/desktop/tools/extender)
@@ -27,8 +28,10 @@ ___
 - Popular plugins:
     + https://github.com/Hack-with-Github/Powerful-Plugins/blob/master/Burp.md
     + https://github.com/AdrianCitu/burp-tabnabbing-extension
-    +
-
+    + https://github.com/InitRoot/BurpJSLinkFinder
+    + https://github.com/wish-i-was/femida
+    + https://github.com/pinnace/burp-jwt-fuzzhelper-extension
+    + https://github.com/ettic-team/EndpointFinder-Burp
 
 ## User Options
 - [About](https://portswigger.net/burp/documentation/desktop/options)
@@ -52,8 +55,8 @@ ___
 ### Articles
 - [Collaborator in Amazon AWS](https://www.nuharborsecurity.com/creating-a-private-burp-collaborator-in-amazon-aws-with-a-letsencrypt-wildcard-certificate/)
 - [Usage of ClickBandit](https://www.hackingarticles.in/advance-web-application-testing-using-burpsuite/)
-- [!]()
-___
+- [HandyCollaborator](https://github.com/federicodotta/HandyCollaborator)
+- [Scanning vulnerability with Burpsuite](https://www.youtube.com/watch?v=1Ns9waAkHQ4)
 
 ## Burp Extender API
 - [Git](https://github.com/PortSwigger/burp-extender-api)
@@ -65,11 +68,21 @@ ___
 - [Example](https://laconicwolf.com/2019/02/07/burp-extension-python-tutorial-encode-decode-hash/)
 
 
+## Practice
+- [Try to repeat examples](https://support.portswigger.net/customer/portal/articles/2326039-the-burp-methodology-)
+- In order to practice attacking vulnerabilities using BurpSuite try to complete all tasks on [DVWA](http://www.dvwa.co.uk/).
+
 ## Rest
 - ### Tutorials
     + [Tutorial 1](https://www.pentestgeek.com/web-applications/burp-suite-tutorial-1)
     + [Cycle of notes](https://jaimelightfoot.com/blog/burp-suite-for-beginners-setup-and-target-proxy-tools/)
     + [Tutorial in Russian](https://habr.com/en/post/328382/)
     + [Tutorial 2](https://codegrazer.com/tutorial/burp-tutorial-beginner.html)
--    https://habr.com/en/post/328382/
--    https://losst.ru/kak-polzovatsya-burp-suite#2_1048108910871086108311001079108610741072108510801077nbspIntruder
+    + [Cycle of Video Tutorials](https://vimeo.com/showcase/3510171)
+    + [HackerOne: Getting started with Burp](https://www.youtube.com/watch?v=LSqC9qgEMi0)
+    + [HackerOne: Maximizing Burp](https://www.youtube.com/watch?v=bHTxJIC_jGI)
+    + [HackerOne: Burp Hacks for Bounty Hackers](https://www.youtube.com/watch?v=bHTxJIC_jGI)
+    
+- ### Community
+    + [Telegram](https://web.telegram.org/#/im?p=@burpsuite)
+
