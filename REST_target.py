@@ -2,6 +2,7 @@ from burp import IBurpExtender, IBurpExtenderCallbacks, ISessionHandlingAction, 
     ICookie, ITab, IProxyListener, IHttpListener, IInterceptedProxyMessage
 from java.io import PrintWriter
 
+
 class BurpExtender(IBurpExtender, IProxyListener, IHttpListener):
     PLUGIN_NAME = "REST API in Target blank"
     COMMENT = "Created by REST API Plugin"
