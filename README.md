@@ -2,9 +2,10 @@
 It's a repo for BurpSuite plugins.
 
 # List of plugins:
-1. Headers JAR
-2. REST API Target
-3. Cookie Jar Cleaner 
+1. Headers JAR - Plugin for automatical updates of Bearer. 
+2. REST API Target - Plugin for showing API request in Target tab.
+3. Cookie Jar Cleaner - Plugin for cleaning of Cookie Jar. 
+4. AuthChecker - Simple plugin for automatical searching of Broken Authentication.
 
 # Headers JAR
 Plugin for updating headers automatically, e.g. to update Bearer after the expiration of the old one.
